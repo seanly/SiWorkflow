@@ -3,11 +3,14 @@ spring:
     name: SiWorkflow
   datasource:
     driverClassName: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/siworkflow?useUnicode=true&characterEncoding=utf-8
+    url: jdbc:mysql://192.168.55.11:3306/siworkflow?useUnicode=true&characterEncoding=utf-8
     username: root
-    password: ''
+    password: root
   jpa:
     show-sql: true
 
 server:
   port: 9000
+
+logging:
+  file: siworkflow.log
