@@ -3,6 +3,7 @@ buildscript {
         springBootVersion = "1.3.2.RELEASE"
     }
     repositories {
+        maven { url 'http://localhost:8081/content/repositories/ctg-release/' }
         maven { url "http://nexus.dev.js:8081/content/groups/public/" }
         jcenter()
         mavenCentral()
@@ -10,9 +11,9 @@ buildscript {
 
     dependencies {
         classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
-        classpath 'com.h2database:h2:1.3.170'
         classpath 'org.flywaydb:flyway-gradle-plugin:3.2.1'
         classpath 'mysql:mysql-connector-java:5.1.38'
+        classpath "xyz.lysean.egret.dependency:egret-dependency-plugin:+"
     }
 }
 
@@ -22,6 +23,7 @@ apply plugin: 'java'
 apply plugin: 'spring-boot'
 apply plugin: 'idea'
 apply plugin: 'eclipse'
+apply plugin: 'egret.dependency'
 
 repositories {
     maven { url "http://nexus.dev.js:8081/content/groups/public/"}
@@ -30,9 +32,8 @@ repositories {
     jcenter()
 }
 
-ext {
-    groovyVersion = "2.3.11"
-    springBootVersion = "1.3.2.RELEASE"
+egret {
+    dependenciesYaml = 'dependencies.yml'
 }
 
 jar {
@@ -40,19 +41,13 @@ jar {
     version = "0.1.0"
 }
 
-
 dependencies {
-    compile "org.codehaus.groovy:groovy-all:${groovyVersion}"
-    compile "org.springframework.boot:spring-boot-starter-web:$springBootVersion"
-    compile "org.springframework.boot:spring-boot-starter-data-jpa:$springBootVersion"
-    compile "org.springframework.boot:spring-boot-starter-actuator:$springBootVersion"
+    compile egret.dependency('groovy')
+    egret.group('bootWeb')
+    compile "org.springframework.boot:spring-boot-starter-data-jpa:${egret.version('springBoot')}"
     compile "mysql:mysql-connector-java:5.1.38"
 
-    testCompile "org.spockframework:spock-core:1.0-groovy-2.4"
-    testCompile "junit:junit:4.12"
-    testCompile "org.springframework.boot:spring-boot-starter-test:$springBootVersion"
-
-    runtime "com.h2database:h2"
+    egret.group('test')
 }
 
 flyway {
