@@ -3,7 +3,7 @@ spring:
     name: SiWorkflow
   datasource:
     driverClassName: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/siworkflow?useUnicode=true&characterEncoding=utf-8
+    url: jdbc:mysql://localhost:3306/xgdash?useUnicode=true&characterEncoding=utf-8
     username: root
     password: ''
   jpa:
