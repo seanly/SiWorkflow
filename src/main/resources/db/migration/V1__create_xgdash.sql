@@ -3,7 +3,7 @@ CREATE TABLE `customer` (
 	`first_name` varchar(100) NOT NULL,
 	`last_name` varchar(100) NOT NULL,
 	PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
 CREATE TABLE `xg_ktv`
@@ -36,7 +36,6 @@ CREATE TABLE `xg_user`
 	UNIQUE UQ_user_tel_no(`tel_no`)
 )
 ;
-
 
 
 CREATE TABLE `xg_service_type`
@@ -113,14 +112,9 @@ CREATE TABLE `xg_room_type`
 	`name` NVARCHAR(32) NOT NULL,
 	`enable` BOOL NOT NULL,
 	`priority` INTEGER NOT NULL,
-	`buyout_frid` BIGINT NOT NULL,
-	`time_frid` BIGINT NOT NULL,
-	`lowest_consume_price` DECIMAL(10) NOT NULL,
-	`amount_consume_price` DECIMAL(10) NOT NULL,
 	`kid` NVARCHAR(32) NOT NULL,
 	PRIMARY KEY (`id`)
-)
-;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
 CREATE TABLE `xg_room`
@@ -128,12 +122,10 @@ CREATE TABLE `xg_room`
 	`id` int(11) NOT NULL AUTO_INCREMENT,
 	`name` NVARCHAR(32) NOT NULL,
 	`enable` BOOL NOT NULL,
-	`key_code` NVARCHAR(32) NOT NULL,
-	`type_id` BIGINT NOT NULL,
+	`room_type_id` BIGINT NOT NULL,
 	`kid` NVARCHAR(32) NOT NULL,
 	PRIMARY KEY (`id`)
-)
-;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
 CREATE TABLE `xg_goods_type`

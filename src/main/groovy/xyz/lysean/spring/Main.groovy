@@ -12,8 +12,12 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 import xyz.lysean.spring.domain.Customer
 import xyz.lysean.spring.domain.Room
+import xyz.lysean.spring.domain.RoomType
 import xyz.lysean.spring.repository.CustomerRepository
 import xyz.lysean.spring.repository.RoomRepository
+import xyz.lysean.spring.repository.RoomTypeRepository
+
+import javax.annotation.Resource
 
 
 @Configuration
@@ -28,11 +32,17 @@ class Main {
         SpringApplication.run(Main.class, args)
     }
 
+    @Resource
+    RoomRepository roomRepository
+
     @RequestMapping("/")
-    String index() {
-        "hello, groovy"
+    List<Room> index() {
+        //"hello, groovy"
+        roomRepository.findAll()
     }
+
     /*
+
     @Bean
     CommandLineRunner demo(CustomerRepository customerRepository) {
         {args ->
@@ -56,22 +66,30 @@ class Main {
 
         }
     }
-
     */
 
     @Bean
-    CommandLineRunner room(RoomRepository roomRepository) {
+    CommandLineRunner demo(RoomRepository roomRepository, RoomTypeRepository roomTypeRepository) {
         {args ->
-            roomRepository.save(new Room("v801", false, "801", 1L, "isongktv"))
-            roomRepository.save(new Room("v802", false, "802", 1L, "isongktv"))
 
-            // fetch all customer
-            log.info("Room found with findAll(): ")
-            log.info("---------------------------------")
-            for(Room room: roomRepository.findAll()) {
+            roomRepository.deleteAll()
+            roomTypeRepository.deleteAll()
+
+            roomTypeRepository.save(new RoomType("seanly", "大包", true, 10))
+            roomTypeRepository.save(new RoomType("seanly", "中包", true, 20))
+
+            roomRepository.save(new Room("seanly", "901", true, roomTypeRepository.findByName("大包")))
+            roomRepository.save(new Room("seanly", "801", false, roomTypeRepository.findByName("中包")))
+
+
+            log.info("Room List: ")
+            log.info("=================================")
+            for (Room room: roomRepository.findAll()) {
                 log.info(room.toString())
             }
-            log.info("")
+
         }
     }
+
+
 }

@@ -1,41 +1,37 @@
 package xyz.lysean.spring.domain
 
 import javax.persistence.Entity
-import javax.persistence.GeneratedValue
-import javax.persistence.GenerationType
-import javax.persistence.Id
+import javax.persistence.JoinColumn
+import javax.persistence.ManyToOne
 import javax.persistence.Table
 
 
 @Entity
 @Table(name = "xg_room")
-class Room {
+class Room extends AbstractEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    long id
-
+    final String kid
     String name
     Boolean enable
-    String keyCode
-    long typeId
-    String kid
+
+    @ManyToOne
+    @JoinColumn(name="room_type_id")
+    RoomType roomType
 
     Room() {
 
     }
 
-    Room(String name, Boolean enable, String keyCode, long typeId, String kid) {
+    Room(String kid, String name, Boolean enable, RoomType roomType) {
         this.name = name
-        this.enable = enable
-        this.keyCode = keyCode
-        this.typeId = typeId
         this.kid = kid
+        this.enable = enable
+        this.roomType = roomType
     }
 
     String toString() {
-        String.format("Room[id=%d, name=%s, enable=%s, type_code=%s, type_id=%d, kid=%s]",
-                id, name, enable.toString(), keyCode, typeId, kid)
+        String.format("Room[kid=%s, id=%d, name=%s, enable=%s, room_type_id=%d, room_type_name=%s]",
+                kid, id, name, enable.toString(), roomType.id, roomType.name)
     }
 
 }
