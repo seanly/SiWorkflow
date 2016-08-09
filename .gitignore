@@ -8,3 +8,7 @@ build
 .project
 *.iml
 *.ipr
+src/main/groovy/Library.groovy
+src/main/groovy/xyz/lysean/jenkinsci/
+src/main/webapp/
+src/test/

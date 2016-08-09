@@ -1,0 +1,54 @@
+
+ext.versions = [
+        groovy: "2.4.5",
+        spring: '4.2.5.RELEASE',
+        springBoot: '1.3.6.RELEASE',
+        batch: '3.0.5.RELEASE',
+        guava: "17.0",
+        rxjava: "1.1.7",
+        retrofit: "1.9.0",
+        logback: '1.1.5',
+        slf4j: '1.7.7',
+        jackson: '2.5.3',
+        okhttp: '2.5.0',
+        spock: '0.7-groovy-2.0',
+        cglib: '3.2.0',
+        snakeyaml: "1.15"
+]
+
+ext.libraries = [
+        "groovy": "org.codehaus.groovy:groovy:${versions.groovy}:indy",
+        "spring-batch-core": "org.springframework.batch:spring-batch-core:${versions.batch}",
+        "guava": "com.google.guava:guava:${versions.guava}",
+        "rxjava": "io.reactivex:rxjava:${versions.rxjava}",
+        "okhttp": "com.squareup.okhttp:okhttp:${versions.okhttp}",
+        "retrofit": "com.squareup.retrofit:retrofit:${versions.retrofit}",
+        "converter-simplexml": "com.squareup.retrofit:converter-simplexml:${versions.retrofit}",
+        "converter-jackson": "com.squareup.retrofit:converter-jackson:${versions.retrofit}",
+        "jackson-core": "com.fasterxml.jackson.core:jackson-core:${versions.jackson}",
+        "jackson-databind": "com.fasterxml.jackson.core:jackson-databind:${versions.jackson}",
+        "spring-web": "org.springframework:spring-web:${versions.spring}",
+        "spring-jdbc": "org.springframework:spring-jdbc:${versions.spring}",
+
+        // I hate logging but this pretty much makes it shut up
+        "logback": "ch.qos.logback:logback-classic:${versions.logback}",
+        "slf4j": "org.slf4j:jcl-over-slf4j:${versions.slf4j}",
+
+        // -- spock test framework libs.
+        "spock-core": "org.spockframework:spock-core:${versions.spock}",
+        "cglib": "cglib:cglib-nodep:${versions.cglib}",
+        "objenesis": "org.objenesis:objenesis:2.2",
+
+        "spock-spring": "org.spockframework:spock-spring:${versions.spock}",
+        "spring-batch-test": "org.springframework.batch:spring-batch-test:${versions.batch}",
+        "spring-test": "org.springframework:spring-test:${versions.spring}",
+        "retrofit-mock": "com.squareup.retrofit:retrofit-mock:${versions.retrofit}",
+
+
+        "h2": "com.h2database:h2:1.4.178",
+
+        // spring boot starters.
+        "spring-boot-starter-web": "org.springframework.boot:spring-boot-starter-web:${versions.springBoot}",
+        "spring-boot-starter-actuator": "org.springframework.boot:spring-boot-starter-actuator:${versions.springBoot}",
+        "snakeyaml": "org.yaml:snakeyaml:${versions.snakeyaml}"
+]
