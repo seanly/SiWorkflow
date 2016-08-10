@@ -4,7 +4,7 @@ buildscript {
         maven { url 'http://repo.jenkins-ci.org/releases/' }
     }
     dependencies {
-        classpath 'org.jenkins-ci.tools:gradle-jpi-plugin:0.18.1'
+        classpath 'org.jenkins-ci.tools:gradle-jpi-plugin:0.14.1'
     }
 }
 
@@ -17,16 +17,10 @@ apply from: "$rootDir/dependency.gradle"
 group 'xyz.lysean.jenkinsci'
 description "Jenkins Job Pipeline View Jenkins plug-in"
 version '1.0.0-SNAPSHOT'
-
-plugins.withType(JavaPlugin) {
-    sourceCompatibility = 1.6
-    targetCompatibility = 1.6
+ext {
+    sourceCompatibility = 1.7
+    targetCompatibility = 1.7
 }
-
-tasks.withType(GroovyCompile) {
-    groovyOptions.optimizationOptions.indy = true
-}
-
 repositories {
     mavenCentral()
     jcenter()
@@ -34,6 +28,7 @@ repositories {
 }
 
 dependencies {
+
     compile libraries.'groovy',
             libraries.'guava',
             libraries.'slf4j',

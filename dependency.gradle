@@ -11,13 +11,13 @@ ext.versions = [
         slf4j: '1.7.7',
         jackson: '2.5.3',
         okhttp: '2.5.0',
-        spock: '0.7-groovy-2.0',
+        spock: '1.0-groovy-2.4',
         cglib: '3.2.0',
         snakeyaml: "1.15"
 ]
 
 ext.libraries = [
-        "groovy": "org.codehaus.groovy:groovy:${versions.groovy}:indy",
+        "groovy": "org.codehaus.groovy:groovy:${versions.groovy}",
         "spring-batch-core": "org.springframework.batch:spring-batch-core:${versions.batch}",
         "guava": "com.google.guava:guava:${versions.guava}",
         "rxjava": "io.reactivex:rxjava:${versions.rxjava}",
